@@ -1,14 +1,13 @@
-const removeFromArray = function (array, ...nums) {
+const removeFromArray = function (array, ...args) {
   //make shallow copy of array so it remains intact when we perform removal operations
-  const newArray = [...array];
+  const newArray = [];
 
-  nums.forEach((num) => {
-    //find the index position of number you want to remove
-    const index = newArray.indexOf(num);
-    //if number exists in array (aka the above line does not return -1)
-    if (index !== -1) {
-      //remove 1 element from specified index of array
-      newArray.splice(index, 1);
+  //iterate over each item in the array
+  array.forEach((item) => {
+    //check if any arg strickly equals the current item
+    if (!args.some((arg) => arg === item)) {
+      // if no arg matches the new item, push it to the newArray
+      newArray.push(item);
     }
   });
   return newArray;
